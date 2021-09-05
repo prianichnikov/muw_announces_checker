@@ -11,7 +11,7 @@ PAGE_URL = 'https://www.gov.pl/web/uw-mazowiecki/biezace-informacje-wsc'
 
 TG_API_URL = 'https://api.telegram.org/bot'
 TG_BOT_TOKEN = ''
-TG_NOTIFY_CHAT_ID = ''
+TG_CHAT_ID = ''
 
 
 def log(message):
@@ -54,7 +54,7 @@ def write_file(file_name, text):
 
 def send_tg_message(message):
     url = TG_API_URL + TG_BOT_TOKEN + '/sendMessage'
-    payload = {'chat_id': TG_NOTIFY_CHAT_ID, 'text': message}
+    payload = {'chat_id': TG_CHAT_ID, 'text': message}
     response = requests.post(url, data=payload)
     if response.status_code != 200:
         log('Could not send Telegram message, status code: {}, exit'.format(response.status_code))
